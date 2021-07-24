@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.19)
 project(algoritmic_toolbox)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 
-add_executable(01_aplusb week1/1_AplusB/aplusb.cpp)
+add_executable(APlusB week1_programming_challenges/1_sum_of_two_digits/APlusB.cpp)
+add_executable(max_pairwise_product week1_programming_challenges/2_maximum_pairwise_product/max_pairwise_product.cpp)
+add_executable(fibonacci_number week2_algorithmic_warmup/1_fibonacci_number/fibonacci.cpp)
+add_executable(last_digit_of_fibonacci_number week2_algorithmic_warmup/2_last_digit_of_fibonacci_number/fibonacci_last_digit.cpp)
