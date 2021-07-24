@@ -1,16 +1,20 @@
 #include <iostream>
+#include <cmath>
 
-long long lcm_naive(int a, int b) {
-  for (long l = 1; l <= (long long) a * b; ++l)
-    if (l % a == 0 && l % b == 0)
-      return l;
-
-  return (long long) a * b;
+uint64_t gcd_fast(uint64_t a, uint64_t b) {
+    while (a && b)
+        (a > b) ? a%=b : b%=a;
+    return std::max(a, b);
 }
 
+uint64_t lcm_fast(uint64_t a, uint64_t b) {
+    return a /gcd_fast(a, b) * b;
+}
+
+
 int main() {
-  int a, b;
+  uint64_t a, b;
   std::cin >> a >> b;
-  std::cout << lcm_naive(a, b) << std::endl;
+  std::cout << lcm_fast(a, b) << std::endl;
   return 0;
 }

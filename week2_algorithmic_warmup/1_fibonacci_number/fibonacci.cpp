@@ -21,25 +21,33 @@ int fibonacci_naive(int n) {
     return fibonacci_naive(n - 1) + fibonacci_naive(n - 2);
 }
 
-int fibonacci_fast(int n) {
-    // write your code here
+uint64_t fibonacci_fast(int n) {
+    if (n <= 1) return n;
+    uint64_t a = 0;
+    uint64_t b = 1;
+    uint64_t fib = 0;
 
-    return 0;
+    while (--n) {
+        fib = a + b;
+        a = b;
+        b = fib;
+    }
+
+    return fib;
 }
 
 void test_solution() {
+    assert(fibonacci_fast(0) == 0);
+    assert(fibonacci_fast(1) == 1);
     assert(fibonacci_fast(3) == 2);
     assert(fibonacci_fast(10) == 55);
-    for (int n = 0; n < 20; ++n)
-        assert(fibonacci_fast(n) == fibonacci_naive(n));
+    assert(fibonacci_fast(7) == 13);
 }
 
 int main() {
+    test_solution();
     int n = 0;
     std::cin >> n;
-
-    std::cout << fibonacci_naive(n) << '\n';
-    //test_solution();
-    //std::cout << fibonacci_fast(n) << '\n';
+    std::cout << fibonacci_fast(n) << '\n';
     return 0;
 }

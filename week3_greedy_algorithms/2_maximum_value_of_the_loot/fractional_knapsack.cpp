@@ -1,13 +1,29 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using std::vector;
 
-double get_optimal_value(int capacity, vector<int> weights, vector<int> values) {
+struct Item {
+    double value = 0;
+    double weight = 0;
+};
+
+double get_optimal_value(double capacity, vector<Item> items) {
   double value = 0.0;
+  std::sort(items.begin(), items.end(),
+              [](const Item& left, const Item& right)
+              {return (left.value / left.weight) > (right.value / right.weight);});
 
-  // write your code here
-
+    for (const auto& item : items) {
+        if (item.weight <= capacity) {
+            capacity -= item.weight;
+            value += item.value;
+        } else {
+            value += item.value * (capacity / item.weight);
+            capacity = 0;
+        }
+    }
   return value;
 }
 
@@ -15,13 +31,13 @@ int main() {
   int n;
   int capacity;
   std::cin >> n >> capacity;
-  vector<int> values(n);
-  vector<int> weights(n);
-  for (int i = 0; i < n; i++) {
-    std::cin >> values[i] >> weights[i];
+  vector<Item> items(n);
+  for (auto& item: items) {
+      std::cin >> item.value;
+      std::cin >> item.weight;
   }
 
-  double optimal_value = get_optimal_value(capacity, weights, values);
+  double optimal_value = get_optimal_value(capacity, items);
 
   std::cout.precision(10);
   std::cout << optimal_value << std::endl;

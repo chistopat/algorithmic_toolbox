@@ -1,3 +1,9 @@
+//l.reait elos.rhuerlo.tkhuetlo.gujdrk,ghdf bmvhdf k,'D:?F':; dfbk,dfkbjdfk,bjdf,kbjd
+//dfbndfs jmvhsf jmfgfyskmghysrk,gyskr, g
+//fgbvm fjshsk, hgfs ,khge, k jg,dad
+//hfdik,asfhksyfmsfh,sdfhks,fyks,fsdifykyf
+//bams njdfhams dhyam sjdham shd
+
 #include <iostream>
 #include <vector>
 
@@ -7,7 +13,6 @@ using std::vector;
 using std::max;
 
 int compute_min_refills(int dist, int tank, vector<int> & stops) {
-    // write your code here
     return -1;
 }
 
